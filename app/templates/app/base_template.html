@@ -1,0 +1,30 @@
+{% load static %}
+
+ <body>
+   <div class="container-fluid">
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <img src="{% static 'images/amtlogo.jpg' %}" width="50" height="50">
+            <!--  {% url 'index' %}  is defined in url path to dynamically create url -->
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+            <a class="nav-link" href="/forum">Forum</a>
+            <a class="nav-link" href="/calculator">Calculator</a>
+            <a class="right-nav" href="/login">Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+      <div class="col-sm-10">
+        <!-- add block content from html template -->
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

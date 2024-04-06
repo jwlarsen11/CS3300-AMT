@@ -1,0 +1,170 @@
+/* poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Protest Guerrilla', sans-serif;
+}
+
+body
+{
+  background-color: #222222;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.displaytext
+{
+  padding-left: 0.5%;
+  color:rgb(194, 186, 186);
+  font-size: 300%;
+}
+.precisetext
+{
+  padding-top: 0.2%;
+  padding-left: 0.5%;
+  color: rgb(194, 186, 186);
+  font-size: 300%;
+  text-align: center;
+}
+.icon
+{
+	size: 20px;
+}
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+    display: none;
+  }
+
+  .slidebox {
+    padding-bottom: 5%;
+    padding-left: 3%;
+    height: 20%;
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 97%; /* Full-width */
+    height: 50%; /* Specified height */
+    background: black; /* Grey background */
+    outline: none; /* Remove outline */
+  }
+
+  .pcswitch {
+    width: 10%;
+  }
+
+  .pcswitch::-webkit-slider-thumb {
+    width: 45% !important;
+    height: 60%;
+    padding-left: 2%;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    background: #313131;
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 7%; /* Set a specific slider handle width */
+    height: 50px; /* Slider handle height */
+    background: #ff9100; /* Orange background */
+    cursor: crosshair; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 50px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #f55206; /* Orange background */
+    cursor: crosshair; /* Cursor on hover */
+  }
+
+
+  /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 3px solid #000000;
+  background-color: #ff9100;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  width: 33.333333%;
+  text-align: center;
+  font-size: 50px;
+  border: none;
+  outline: 1px solid black;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #f55206;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #f55206;
+}
+
+.precisecontainer {
+  width: 100%; /* Width of the outside container */
+  height: 100%;
+  align-self: center;
+}
+
+/*drop downs for precision calculator */
+.dropdownbox {
+  display: block;
+  border: 2px solid #f55206;
+  background-color: black;
+  color: #ff9100;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 300%;
+  min-width: 10%;
+  text-align: center;
+}
+
+/*text boxes for precision calculator */
+.inputbox {
+  display: block;
+  border: 2px solid #f55206;
+  background-color: black;
+  color: #ff9100;
+  width: 8%;
+  min-width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 300%;
+  text-align: center;
+}
+
+.inputbox::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.inputbox:focus {
+  border: 4px solid red;
+  color: white;
+}
+
+  @media only screen and (max-width: 564px)
+{
+
+}

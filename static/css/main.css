@@ -1,0 +1,51 @@
+/* poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Protest Guerrilla', sans-serif;
+}
+
+body
+{
+    background-color: rgb(30, 30, 30);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.header
+{
+    display: flex;
+    height: 3.5em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 30px;
+}
+.header h1,
+header nav
+{
+    display: flex;
+    vertical-align: middle;
+}
+.login
+{
+    display: flex;
+    justify-content: right;
+    align-self: flex-end;
+    color: whitesmoke;
+    font-size: 30px;
+    vertical-align: middle;
+}
+.login:hover
+{
+    color: orange;
+    text-decoration-color: orange;
+}
+.title
+{
+    color: #ff9100;
+}

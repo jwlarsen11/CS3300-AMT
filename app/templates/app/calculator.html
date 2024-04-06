@@ -1,0 +1,139 @@
+{% extends "app/base_template.html" %}
+{% load static %}
+{% block content %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/calc.css' %}">
+	<title>AMT - Login</title>
+</head>
+
+
+<body onload="document.getElementById('defaultOpen').click();">
+    <div class="tab">
+        <button class="tablinks" onclick="openCalc(event,'Simple')" id="defaultOpen">Simple</button>
+        <button class="tablinks" onclick="openCalc(event,'Advanced')">Creep</button>
+        <button class="tablinks" onclick="openCalc(event,'Precision')">Precision</button>
+    </div>
+
+    <script type = "text/javascript" src="{% static 'scripts/OpenCalculator.js' %}">
+        
+    </script>
+
+    <!-------------------------------------- Simple Calculator --------------------------------->
+    <div class="slidecontainer" id="Simple">
+        <div class="slidebox">
+            <h1 class="displaytext">Pelet Weight (Grams): <span id="swout"></span>g</h1>
+            <input type="range" min="0" max="11" value="4" class="slider" id="sweightSlider">
+        </div>
+    
+        <div class="slidebox">
+            <h1 class="displaytext">Muzzle Velocity (FPS): <span id="sfout"></span>FPS</h1>
+            <input type="range" min="0" max="650" value="310" class="slider" id="sFpsSlider">
+        </div>
+    
+        <div class="slidebox">
+            <h1 class="displaytext">Kinetic Energy (Joules): <span id="sjout"></span>J</h1>
+            <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="sjouleSlider">
+        </div>
+
+        <script type = "text/javascript" src="{% static 'scripts/SimpleCalculator.js' %}"></script>
+    </div>
+
+    <!---------------------------------------- Advanced Calculator ------------------------------>
+    <div class="slidecontainer" id="Advanced">
+        <div class="slidebox">
+            <h1 class="displaytext">Starting Pelet Weight (Grams): <span id="awout"></span>g</h1>
+            <input type="range" min="0" max="11" value="4" class="slider" id="aweightSlider">
+        </div>
+
+        <div class="slidebox">
+            <h1 class="displaytext">Starting Muzzle Velocity (FPS): <span id="afout"></span>FPS</h1>
+            <input type="range" min="0" max="650" value="310" class="slider" id="aFpsSlider">
+        </div>
+
+        <div class="slidebox">
+            <h1 class="displaytext">Target Pelet Weight (Grams): <span id="atwout"></span>g</h1>
+            <input type="range" min="0" max="11" value="4" class="slider" id="atweightSlider">
+        </div>
+
+        <div class="slidebox">
+            <h1 class="displaytext">Final Kinetic Energy (Joules): <span id="ajout"></span>J</h1>
+            <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="ajouler">
+        </div>
+
+        <script type = "text/javascript" src="{% static 'scripts/AdvancedCalculator.js' %}"></script>
+    </div>
+
+    <!--------------------------------------- Precision Calculator ------------------------------>
+    <div class="slidecontainer" id="Precision">
+    <div class="precisecontainer">
+        <!---some precise ass shit in here :3 --->
+
+
+        <!---<div class="slidebox">
+            <h1 class="precisetext">Account for Joule Creep: <input type="range" min="0" max="1" value="0" class="slider pcswitch" id="pcswitch"> <span id="pcsout">False</span></h1>
+            
+        </div>--->
+
+        <h1 class="precisetext">Pelet Weight (Grams)</h1>
+        <select name="pweight" id="pweight" class="dropdownbox">
+            <option value=".20">0.20g</option>
+            <option value=".25">0.25g</option>
+            <option value=".28">0.28g</option>
+            <option value=".30">0.30g</option>
+            <option value=".32" selected="selected">0.32g</option>
+            <option value=".36">0.36g</option>
+            <option value=".40">0.40g</option>
+            <option value=".42">0.42g</option>
+            <option value=".45">0.45g</option>
+            <option value=".48">0.48g</option>
+            <option value=".50">0.50g</option>
+            <option value=".52">0.52g</option>
+        </select><br>
+        <h1 class="precisetext">Velocity (FPS)</h1><br>
+        <input type="number" id ="PFPS" name="pfps" size="3" required="TRUE" value="310" class="inputbox"><br>
+        <h1 class="precisetext">Kinetic Energy (Joules)</h1><br>
+        <input type="number" id="pJoules" name="pjoules" size="4" value="1.43" class="inputbox"><br>
+
+        <!------------------------------ Precision + Creep ---------------------------------------
+        <h1 class="precisetext" hidden="TRUE">Starting Pelet Weight (Grams)</h1>
+        <select name="pweight" id="pweight" class="dropdownbox" hidden="TRUE">
+            <option value=".20">0.20g</option>
+            <option value=".25">0.25g</option>
+            <option value=".28">0.28g</option>
+            <option value=".30">0.30g</option>
+            <option value=".32" selected="selected">0.32g</option>
+            <option value=".36">0.36g</option>
+            <option value=".40">0.40g</option>
+            <option value=".42">0.42g</option>
+            <option value=".45">0.45g</option>
+            <option value=".48">0.48g</option>
+            <option value=".50">0.50g</option>
+            <option value=".52">0.52g</option>
+        </select><br>
+
+        <h1 class="precisetext" hidden="TRUE">Starting Velocity (FPS)</h1><br>
+        <input type="number" id ="PFPS" name="pfps" size="3" required="TRUE" value="310" class="inputbox" hidden="TRUE"><br>
+
+        <h1 class="precisetext" hidden="TRUE">Target Pelet Weight (Grams)</h1>
+        <select name="pweight" id="pweight" class="dropdownbox" hidden="TRUE">
+            <option value=".20">0.20g</option>
+            <option value=".25">0.25g</option>
+            <option value=".28">0.28g</option>
+            <option value=".30">0.30g</option>
+            <option value=".32" selected="selected">0.32g</option>
+            <option value=".36">0.36g</option>
+            <option value=".40">0.40g</option>
+            <option value=".42">0.42g</option>
+            <option value=".45">0.45g</option>
+            <option value=".48">0.48g</option>
+            <option value=".50">0.50g</option>
+            <option value=".52">0.52g</option>
+        </select><br>
+
+        <h1 class="precisetext" hidden="TRUE">Kinetic Energy (Joules)</h1><br>
+        <input type="number" id="pJoules" name="pjoules" size="4" value="1.43" class="inputbox" hidden="TRUE"><br> --->
+        <script type = "text/javascript" src="{% static 'scripts/PrecisionCalculator.js' %}"></script>
+    </div>
+    </div>
+</body>
+{% endblock %}
