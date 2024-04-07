@@ -6,13 +6,25 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
 <h1 style="color: #ff9100; padding-bottom: 0.5%;">Main Forum</h1>
-<a href="{% url 'create-post'%}" style="padding-bottom: 0.5%;"><button type="button">New</button></a>
-    <ul class="list-group">
+<a href="{% url 'create-post'%}" style="padding-bottom: 0.5%;"><button type="button" style="height: 5%; width: 10%; font-size: 30px; border: 4px solid black;">New</button></a>
+    <table style="color:darkorange; border: 2px solid black; letter-spacing: 1px;">
+        <thead style="background-color: #454545;"> <tr>
+            <th scope="col">User</th>
+            <th scope="col">Post</th>
+            <th scope="col">Date</th>
+        </tr></thead>
+        <tbody style="background-color: #353535;">
         {% for i in posts %}
-                <p style="padding-bottom: 0.25%; padding-top: 0.25%;">
+        <tr>
                     <!-- Post Wrapper -->
-                    <strong><a href="{{ i.get_absolute_url }}" style="background-color: black; outline: 1px solid grey;">PlaceHolderUsername: {{ i.title }} | posted: {{i.date}}</a></strong>
-                    </div>
+                    <th scope="row" style="color:#FF4411;">Username</th>
+                    <td style="color:#FF4411;"><a href="{{ i.get_absolute_url }}"> {{i.title}} </a></td>
+                    <td style="color:#FF4411;"> {{i.date}} </td>
+        </tr>
+                    <!---
+                    <strong><a href="{{ i.get_absolute_url }}" style="background-color: black; outline: 2px solid grey; font-size: 30px;">Username: {{ i.title }} | posted: {{i.date}}</a></strong>
+                    -->
+                </div>
                 </p>
             </li>
         {% endfor %}

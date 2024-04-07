@@ -4,9 +4,9 @@
 
 <!-- Replace block content in base_template.html -->
 {% block content %}
-<h2>{{post.title }} <h5>posted {{ post.date }}</h5> </h2>
-<h3>{{ post.body }}</h3>
+<h2 style="color:orange; font-size: 30px;">{{post.title }} <h5 style="color:orange; font-size: 15px;">posted {{ post.date }}</h5> </h2>
+<h3 style="color:orange; font-size: 30px;">{{ post.body }}</h3>
 
-<a href="{% url 'update-post' post.id %}"> <button type="button">Edit</button></a>
-<a href="{% url 'delete-post' post.id %}"> <button type="button">Delete</button></a>
+<a href="{% url 'update-post' post.id %}"> <button type="button" style="height: 2.5%; width: 5%; font-size: 20px;">Edit</button></a>
+<a href="{% url 'delete-post' post.id %}"> <button type="button" style="height: 2.5%; width: 5%; font-size: 20px;">Delete</button></a>
 {% endblock %}
