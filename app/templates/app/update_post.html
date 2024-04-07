@@ -1,7 +1,7 @@
 {% extends 'app/base_template.html' %}
 
 {% block content%}
-<h1>Update Post</h1>
+<h1 style="color:orange; font-size: 30px;">Update Post</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
