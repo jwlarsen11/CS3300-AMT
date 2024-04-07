@@ -1,8 +1,8 @@
 {% extends 'app/base_template.html' %}
 
 {% block content%}
-<h1>Create Post</h1>
-<form method="post">
+<h1 style="color:orange; font-size: 30px;">Create Post</h1>
+<form method="post" style="color:orange; font-size: 20px;">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Create">
