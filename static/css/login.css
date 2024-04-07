@@ -11,12 +11,12 @@
 :root
 {
 	--primary-color: #ff9100;
-	--second-color: #ff9100;
+	--second-color: #ff00b3;
 	--black-color: #000000;
 }
 body
 {
-	background-image: url("../img/background.jpg");
+	background-color: #222222;
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;

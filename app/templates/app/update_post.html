@@ -1,0 +1,16 @@
+{% extends 'app/base_template.html' %}
+
+{% block content%}
+<h1>Update Post</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% if form.errors %}
+    <p><strong>Please correct the errors below:</strong></p>
+    {{ form.non_field_errors }}
+    {{ form.title.errors }}
+    {{ form.description.errors }}
+{% endif %}
+{% endblock %}

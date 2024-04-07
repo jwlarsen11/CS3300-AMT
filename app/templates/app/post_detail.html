@@ -1,0 +1,12 @@
+<!-- inherit from base.html-->
+{% extends "app/base_template.html" %}
+
+
+<!-- Replace block content in base_template.html -->
+{% block content %}
+<h2>{{post.title }} <h5>posted {{ post.date }}</h5> </h2>
+<h3>{{ post.body }}</h3>
+
+<a href="{% url 'update-post' post.id %}"> <button type="button">Edit</button></a>
+<a href="{% url 'delete-post' post.id %}"> <button type="button">Delete</button></a>
+{% endblock %}

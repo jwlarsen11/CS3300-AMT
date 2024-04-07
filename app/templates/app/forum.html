@@ -1,0 +1,20 @@
+<!-- inherit from base.html-->
+{% extends "app/base_template.html" %}
+{% load static %}
+
+<!-- Replace block content in base_template.html -->
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<h1 style="color: #ff9100; padding-bottom: 0.5%;">Main Forum</h1>
+<a href="{% url 'create-post'%}" style="padding-bottom: 0.5%;"><button type="button">New</button></a>
+    <ul class="list-group">
+        {% for i in posts %}
+                <p style="padding-bottom: 0.25%; padding-top: 0.25%;">
+                    <!-- Post Wrapper -->
+                    <strong><a href="{{ i.get_absolute_url }}" style="background-color: black; outline: 1px solid grey;">PlaceHolderUsername: {{ i.title }} | posted: {{i.date}}</a></strong>
+                    </div>
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
