@@ -19,4 +19,8 @@
 <h3 style="color: maroon;">User Profiles</h3>
 <h3 style="color: maroon;">Team Pages</h3>
 <h3 style="color: maroon;">Event Calender</h3>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">logout</button>
+  </form>
 {% endblock %}
