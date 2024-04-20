@@ -40,7 +40,7 @@ def registerPage(request):
     return render(request, 'registration/register.html', context)
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['members_role'])
+@allowed_users(allowed_roles=['Members_Role'])
 def userPage(request):
     member = request.user.member
     form = MemberForm(instance = member)
@@ -52,13 +52,10 @@ def userPage(request):
     context = {'form':form}
     return render(request, 'app/user.html', context)
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['members_role'])
+
 def calculator(request):
     return render(request, 'app/calculator.html')
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['members_role'])
 def forum(request):
     posts = ForumPost.objects.filter(public=True)
     return render(request, 'app/forum.html', {'posts': posts})
@@ -79,7 +76,7 @@ def update_post(request, post_id):
     return render(request, 'app/update_post.html', {'form': form, 'post': post})
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['members_role'])
+@allowed_users(allowed_roles=['Members_Role'])
 def delete_post(request, post_id):
     post = ForumPost.objects.get(pk= post_id)
     form = DeletePostForm(request.POST)
@@ -89,13 +86,13 @@ def delete_post(request, post_id):
     return render(request, 'app/delete_post.html', {'form': form, 'post': post})
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['members_role'])
+@allowed_users(allowed_roles=['Members_Role'])
 def create_post(request):
     form = PostForm()
 
     if request.method == 'POST':
         post_data = request.POST.copy()
-        form = PostForm(post_data)
+        form = PostForm(post_data, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.save()

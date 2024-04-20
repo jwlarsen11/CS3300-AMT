@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class PostForm(ModelForm):
     class Meta:
         model = ForumPost
-        fields =['title', 'body', 'public']
+        fields =['title', 'body', 'public', 'upload_image']
 
 class DeletePostForm(forms.Form):
     pass

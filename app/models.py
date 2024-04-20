@@ -17,7 +17,8 @@ class ForumPost(models.Model):
     title = models.CharField(max_length=30)
     body = models.CharField(max_length=1000)
     public = models.BooleanField(default=False)
-
+    upload_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    
     def __str__(self):
         return self.title
     
