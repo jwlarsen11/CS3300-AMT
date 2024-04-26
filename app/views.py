@@ -60,12 +60,18 @@ def forum(request):
     posts = ForumPost.objects.filter(public=True)
     return render(request, 'app/forum.html', {'posts': posts})
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Members_Role'])
 def view_post(request, post_id):
     post = get_object_or_404(ForumPost, pk=post_id)
     return render(request, 'app/post_detail.html', {'post':post})
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Members_Role'])
 def update_post(request, post_id):
     post = get_object_or_404(ForumPost, id=post_id)
+    if post.op != request.user:
+        return redirect('view-post', post_id)
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -79,6 +85,8 @@ def update_post(request, post_id):
 @allowed_users(allowed_roles=['Members_Role'])
 def delete_post(request, post_id):
     post = ForumPost.objects.get(pk= post_id)
+    if post.op != request.user:
+        return redirect('view-post', post_id)
     form = DeletePostForm(request.POST)
     if request.method == 'POST' and form.is_valid():
         post.delete()
@@ -89,12 +97,12 @@ def delete_post(request, post_id):
 @allowed_users(allowed_roles=['Members_Role'])
 def create_post(request):
     form = PostForm()
-
     if request.method == 'POST':
         post_data = request.POST.copy()
         form = PostForm(post_data, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
+            post.op = request.user
             post.save()
             return redirect('/forum')
     

@@ -6,21 +6,30 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 
-<h1 style="color: orange;">Airsoft Multi Tool</h1>
-<h2 style="color: orange;"> The one stop shop for all things airsoft</h2>
-<h2 style="color: #884411;"> This website is a work in progress, please check back later for more features!</h2>
-<h3 style="color: orange; padding-top: 1%;"> Current features:</h3>
-<h3 style="color: orange;"> <a href="{% url 'forum'%}" style="color:red;">Forum</a></h3>
-<h3 style="color: orange;"> <a href="{% url 'calculator'%}"style="color:red;">Kinetic Calculator</a></h3>
+<body>
+  <h1 style="color: orange;">Airsoft Multi Tool</h1>
+  <h2 style="color: orange;"> The one stop shop for all things airsoft</h2>
+  <h2 style="color: #884411;"> This website is a work in progress, please check back later for more features!</h2>
+  <h3 style="color: orange; padding-top: 1%;"> Current features:</h3>
+  <h3 style="color: orange;"> <a href="{% url 'forum'%}" style="color:red;">Forum</a></h3>
+  <h3 style="color: orange;"> <a href="{% url 'calculator'%}"style="color:red;">Kinetic Calculator</a></h3>
 
-<h3 style="color: orange; padding-top: 1%;"> Planned features:</h3>
-<h3 style="color: maroon;">Travel Map</h3>
-<h3 style="color: maroon;">Field Reviews</h3>
-<h3 style="color: maroon;">User Profiles</h3>
-<h3 style="color: maroon;">Team Pages</h3>
-<h3 style="color: maroon;">Event Calender</h3>
-<form method="post" action="{% url 'logout' %}">
+  <h3 style="color: orange; padding-top: 1%;"> Planned features:</h3>
+  <h3 style="color: maroon;">Travel Map</h3>
+  <h3 style="color: maroon;">Field Reviews</h3>
+  <h3 style="color: maroon;">User Profiles</h3>
+  <h3 style="color: maroon;">Team Pages</h3>
+  <h3 style="color: maroon;">Event Calender</h3>
+  <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
     <button type="submit">logout</button>
   </form>
-{% endblock %}
+
+            {% if user.is_authenticated %}
+            <h1>User: {{ user.get_username }}</h1>
+            {% else %}
+            <a class="right-nav" href="accounts/login" style="vertical-align: middle;">Login</a>
+            {% endif %}
+
+  {% endblock %}
+</body>

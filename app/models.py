@@ -12,7 +12,7 @@ class Member(models.Model):
     email = models.CharField(max_length=50)
 
 class ForumPost(models.Model):
-    #op = models.ForeignKey(User, on_delete=models.CASCADE, default=None, related_name='posts')
+    op = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True, related_name='poster')
     date = models.DateTimeField(default=datetime.datetime.now())
     title = models.CharField(max_length=30)
     body = models.CharField(max_length=1000)
