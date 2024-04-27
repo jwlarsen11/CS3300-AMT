@@ -14,7 +14,7 @@ class Member(models.Model):
 class ForumPost(models.Model):
     op = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True, related_name='poster')
     date = models.DateTimeField(default=datetime.datetime.now())
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30, null = False)
     body = models.CharField(max_length=1000)
     public = models.BooleanField(default=False)
     upload_image = models.ImageField(null=True, blank=True, upload_to="images/")

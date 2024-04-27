@@ -1,5 +1,6 @@
 from django.test import LiveServerTestCase, TestCase
-from .models import User, ForumPost, Member
+from .models import User, ForumPost
+from .forms import CreateUserForm, PostForm
 from .views import create_post
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -84,10 +85,31 @@ class CreatePostTest(TestCase):
         post = ForumPost.objects.filter(title='testPost')
         self.assertTrue(post.exists())
 
-class UserRoleTest(TestCase):
-    def setUp(self):
-        user1 = User.objects.create(username='testuser')
+class UserFormTest(TestCase):
+    def test_invalid_data(self):
+        data = {}
+        f = CreateUserForm(data=data)
+        self.assertFalse(f.is_valid())
+        self.assertEquals(f.errors['password1'], ['This field is required.'])
 
-    def test_user_role(self):
-        user = User.groups.filter(name='Members_Role')
-        self.assertTrue(user.exists())
+    def test_valid_data(self):
+        data = {'username': 'test', 'email': 'test@test.com', 'password1': 'testpass12', 'password2': 'testpass12'}
+        f = CreateUserForm(data=data)
+        self.assertTrue(f.is_valid())
+
+class PostFormTest(TestCase):
+    def test_invalid_data(self):
+        data = {}
+        f = PostForm(data=data)
+        self.assertFalse(f.is_valid())
+        self.assertEquals(f.errors['title'], ['This field is required.'])
+
+    def test_valid_data(self):
+        data = {'title':'testtitle', 'body':'testbody'}
+        f = PostForm(data=data)
+        self.assertTrue(f.is_valid())
+
+class ViewTest(TestCase):
+    def test_forum_view(self):
+        response = self.client.get('/forum/')
+        self.assertEquals(response.status_code, 200)
